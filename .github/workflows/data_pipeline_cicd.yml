@@ -1,0 +1,38 @@
+name: CI/CD Data Architecture Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  code_quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install Linting Tools
+        run: pip install flake8 sqlfluff
+
+      - name: Lint Python (Ingestion)
+        run: flake8 script_ingestion/jira/ --max-line-length=120
+
+      - name: Lint SQL (Transformations)
+        run: sqlfluff lint script_transform/jira/ --dialect databricks
+
+  deploy_simulation:
+    needs: code_quality
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Deploy Simulation
+        run: |
+          echo "Deploying Jira Ingestion to DBFS..."
+          # Aqui entrariam comandos como databricks fs cp script_ingestion/jira/ingest_api_to_bronze.py dbfs:/...
+          echo "Deploying SQL files to DBFS..."
+          echo "Updating DAGs in Airflow server..."

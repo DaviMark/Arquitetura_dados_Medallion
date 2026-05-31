@@ -2,7 +2,7 @@
 
 ## Visão Geral
 
-Este repositório contém a infraestrutura de dados para o domínio de gestão de projetos (Jira), projetada para garantir escalabilidade, governança e reprodutibilidade analítica. O projeto segue a arquitetura **Medallion (Bronze/Silver/Gold)** e é orquestrado via **Airflow**, com automação de CI/CD para garantir a integridade do código.
+Este repositório contém a infraestrutura de dados para o domínio de gestão de projetos, projetada para garantir escalabilidade, governança e reprodutibilidade analítica. O projeto segue a arquitetura **Medallion (Bronze/Silver/Gold)** e é orquestrado via **Airflow**, com automação de CI/CD para garantir a integridade do código.
 
 ## Arquitetura Técnica
 
@@ -27,7 +27,7 @@ Este repositório contém a infraestrutura de dados para o domínio de gestão d
 
 ## Destaques da Solução
 
-* **Modularidade**: Arquitetura orientada a domínios (Jira), facilitando a manutenção e a integração de novas fontes de dados.
+* **Modularidade**: Arquitetura orientada a domínios, facilitando a manutenção e a integração de novas fontes de dados.
 * **Esteira de CI/CD**: Implementação de *Linting* (Flake8 para Python, SQLFluff para SQL) que garante a qualidade do código antes de qualquer deploy em produção.
 * **Governança de dados**: Estruturação de dicionário de dados centralizado e controle de acesso baseado em funções, com mascaramento de dados sensíveis na camada Silver, garantindo a privacidade e a padronização terminológica em todo o pipeline.
 * **Pipeline Medallion**:

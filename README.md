@@ -17,6 +17,7 @@ Este repositório contém a infraestrutura de dados para o domínio de gestão d
 .
 ├── .github/workflows/      # Pipelines de CI/CD (Linting e Deploy)
 ├── dags/                   # Orquestração do fluxo de dados
+├── governance/             # Governança de dados
 ├── script_ingestion/       # Camada Bronze: Extração via API
 ├── script_transform/       # Camadas Silver/Gold: Transformações SQL
 ├── tests/                  # Testes unitários para pipelines
@@ -28,6 +29,7 @@ Este repositório contém a infraestrutura de dados para o domínio de gestão d
 
 * **Modularidade**: Arquitetura orientada a domínios (Jira), facilitando a manutenção e a integração de novas fontes de dados.
 * **Esteira de CI/CD**: Implementação de *Linting* (Flake8 para Python, SQLFluff para SQL) que garante a qualidade do código antes de qualquer deploy em produção.
+* **Governança de dados**: Estruturação de dicionário de dados centralizado e controle de acesso baseado em funções, com mascaramento de dados sensíveis na camada Silver, garantindo a privacidade e a padronização terminológica em todo o pipeline.
 * **Pipeline Medallion**:
 * **Bronze**: Ingestão bruta via API, mantendo a fidelidade da fonte.
 * **Silver**: Limpeza, padronização e estruturação dos dados.
